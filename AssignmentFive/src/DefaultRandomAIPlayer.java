@@ -26,10 +26,18 @@ public class DefaultRandomAIPlayer extends Player {
     public Move makeMove(){
     	//picks a random space
         Pair<Integer,Integer> space = pickRandomSpace();
-
-        //if that space is empty places stone there
-        if (boardstate.get(space) == null) {
-        	return new PlaceStone(this, space);
+        
+        //deciedes wether to play a wall or not
+        if(rand.nextInt(3) < 2){
+        	//if that space is empty places wall there
+            if (boardstate.get(space) == null) {
+            	return new PlaceWall(this, space);
+            }
+        } else{
+        	//if that space is empty places stone there
+            if (boardstate.get(space) == null) {
+            	return new PlaceStone(this, space);
+            }
         }
 
         //if space contain it's own stone, checks surrounding spaces for enemy stones to move onto

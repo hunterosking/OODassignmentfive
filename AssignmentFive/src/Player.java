@@ -4,7 +4,7 @@ import java.util.*;
 import javafx.util.Pair;
 
 public abstract class Player implements Observer {
-  String name;
+	String name;
 	Observable observable;
 	protected Map<Pair<Integer,Integer>,Player> boardstate;
 	private int stones;
