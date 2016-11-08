@@ -40,10 +40,12 @@ public class DefaultRandomAIPlayer extends Player {
             }
         }
 
-        //if space contain it's own stone, checks surrounding spaces for enemy stones to move onto
+        //if space contains ally stone, checks surrounding spaces for enemy stones to move onto
         if (boardstate.get(space) == this) {
         	Pair<Integer,Integer> target = new Pair<Integer,Integer>(space.getKey(), space.getValue()+1);
         	if (boardstate.get(target) != null && boardstate.get(target) != this) {
+        		//check if this space has a wall
+        			//if so, 
         		return new MoveStone(this, space, target);
         	}
 
@@ -65,5 +67,9 @@ public class DefaultRandomAIPlayer extends Player {
 
 		//if it doesn't make any moves, try again
 		return makeMove();
+    }
+    
+    MoveStone movePiece(){
+    	
     }
 }
