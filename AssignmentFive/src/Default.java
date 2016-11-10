@@ -18,8 +18,8 @@ public class Default implements Mode {
 
 	}
 
-	public Map<Pair<Integer,Integer>,Player> setBoard() {
-		Map<Pair<Integer,Integer>,Player> bm = new HashMap<Pair<Integer,Integer>,Player>();
+	public Map<Pair<Integer,Integer>,Stone> setBoard() {
+		Map<Pair<Integer,Integer>,Stone> bm = new HashMap<Pair<Integer,Integer>,Stone>();
 		for (int i=1; i<6; i++) {
 			for (int i2=1; i2<6; i2++) {
 				bm.put(new Pair<Integer,Integer>(i,i2), null);

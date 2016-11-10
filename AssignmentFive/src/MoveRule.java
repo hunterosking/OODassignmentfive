@@ -23,7 +23,7 @@ public class MoveRule extends Rule {
       if (boardstate.get(ms.getTarget())==null) {
         return false;
       }
-      if (boardstate.get(ms.getOrigin())!=ms.getPlayer()){
+      if (boardstate.get(ms.getOrigin()).owner != ms.getPlayer()){
         return false;
       }
       return FooGame.checkAdjacency(ms.getOrigin(), ms.getTarget());

@@ -3,15 +3,15 @@ import java.util.Observable;
 import java.util.*;
 import javafx.util.Pair;
 
-public class DefaultRandomAIPlayer extends Player {
+public class RandomWallAIPlayer extends Player {
 	private Random rand;
 
-	public DefaultRandomAIPlayer(Observable o) {
+	public RandomWallAIPlayer(Observable o) {
   		super(o, "The Computer");
   		rand = new Random();
   	}
 
-	public DefaultRandomAIPlayer(Observable o, String name) {
+	public RandomWallAIPlayer(Observable o, String name) {
 	  	super(o, name);
 	  	rand = new Random();
 	  }
@@ -27,40 +27,38 @@ public class DefaultRandomAIPlayer extends Player {
     	//picks a random space
         Pair<Integer,Integer> space = pickRandomSpace();
         
-        //deciedes wether to play a wall or not
+        //decides whether to play a wall or not
         if(rand.nextInt(3) < 2){
         	//if that space is empty places wall there
             if (boardstate.get(space) == null) {
-            	return new PlaceWall(this, space);
+            	return new PlaceStone(this, space, 1);
             }
         } else{
         	//if that space is empty places stone there
             if (boardstate.get(space) == null) {
-            	return new PlaceStone(this, space);
+            	return new PlaceStone(this, space, 0);
             }
         }
 
         //if space contains ally stone, checks surrounding spaces for enemy stones to move onto
-        if (boardstate.get(space) == this) {
+        if (boardstate.get(space).owner == this) {
         	Pair<Integer,Integer> target = new Pair<Integer,Integer>(space.getKey(), space.getValue()+1);
-        	if (boardstate.get(target) != null && boardstate.get(target) != this) {
-        		//check if this space has a wall
-        			//if so, 
+        	if (boardstate.get(target) != null && boardstate.get(target).owner != this) {
         		return new MoveStone(this, space, target);
         	}
 
         	target = new Pair<Integer,Integer>(space.getKey(), space.getValue()-1);
-        	if (boardstate.get(target) != null && boardstate.get(target) != this) {
+        	if (boardstate.get(target) != null && boardstate.get(target).owner != this) {
         		return new MoveStone(this, space, target);
         	}
 
         	target = new Pair<Integer,Integer>(space.getKey()+1, space.getValue());
-        	if (boardstate.get(target) != null && boardstate.get(target) != this) {
+        	if (boardstate.get(target) != null && boardstate.get(target).owner != this) {
         		return new MoveStone(this, space, target);
         	}
 
         	target = new Pair<Integer,Integer>(space.getKey()-1, space.getValue());
-        	if (boardstate.get(target) != null && boardstate.get(target) != this) {
+        	if (boardstate.get(target) != null && boardstate.get(target).owner != this) {
         		return new MoveStone(this, space, target);
         	}
 		}
@@ -68,8 +66,14 @@ public class DefaultRandomAIPlayer extends Player {
 		//if it doesn't make any moves, try again
 		return makeMove();
     }
-    
-    MoveStone movePiece(){
-    	
+    /*
+    MoveStone movePiece( Integer x, Integer y, Pair<Integer, Integer> space){
+    	Pair<Integer, Integer> target = new Pair<Integer,Integer>(space.getKey()+x, space.getValue()+y);
+    	if (boardstate.get(target) != null && boardstate.get(target) != this) {
+    		return new MoveStone(this, space, target);
+    	}else{
+    		return null;
+    	}
     }
+    */
 }

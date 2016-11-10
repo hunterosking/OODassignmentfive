@@ -4,7 +4,7 @@ import java.util.*;
 import javafx.util.Pair;
 
 public class FooGame extends Observable {
-    protected Map<Pair<Integer,Integer>,Player> boardstate;
+    protected Map<Pair<Integer,Integer>,Stone> boardstate;
     protected ArrayList<Player> playerlist;
     protected ArrayList<Rule> ruleslist;
     protected ArrayList<WinCondition> winlist;
@@ -52,8 +52,8 @@ public class FooGame extends Observable {
     	ruleslist.remove(r);
     }
 
-    public Map<Pair<Integer,Integer>,Player> getBoardState() {
-    	return new HashMap<Pair<Integer,Integer>,Player>(boardstate);
+    public Map<Pair<Integer,Integer>,Stone> getBoardState() {
+    	return new HashMap<Pair<Integer,Integer>,Stone>(boardstate);
     }
 
     public ArrayList<Player> getPlayers() {

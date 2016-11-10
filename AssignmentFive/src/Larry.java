@@ -21,7 +21,7 @@ public class Larry extends Player {
         ArrayList<Pair<Integer,Integer>> my_spaces = new ArrayList<Pair<Integer,Integer>>();
 
         for (Pair<Integer,Integer> key : boardstate.keySet()) {
-            Player value = boardstate.get(key);
+            Player value = boardstate.get(key).owner;
             if (value == this) {
                 my_spaces.add(key);
             }
@@ -56,9 +56,10 @@ public class Larry extends Player {
         aspaces.add(t(choice.getKey(), choice.getValue()+1));
         aspaces.add(t(choice.getKey(), choice.getValue()-1));
         Pair<Integer,Integer> achoice = aspaces.get(rand.nextInt(aspaces.size()));
-        if (boardstate.getOrDefault(achoice, this) == null) {
+        Stone lst = new Stone(this, 0);
+        if (boardstate.getOrDefault(achoice, lst) == null) {
             failsafe = 0;
-            return new PlaceStone(this, achoice);
+            return new PlaceStone(this, achoice, 0);
         } else {
             return randomAdjacent(spaces);
         }

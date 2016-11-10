@@ -5,7 +5,7 @@ import javafx.util.Pair;
 
 public abstract class WinCondition implements Observer {
 	Observable observable;
-	protected Map<Pair<Integer,Integer>,Player> boardstate;
+	protected Map<Pair<Integer,Integer>,Stone> boardstate;
 	ArrayList<Player> playerlist;
 
 	public WinCondition(Observable observable) {

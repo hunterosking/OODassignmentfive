@@ -3,7 +3,7 @@ import javafx.util.Pair;
 
 public abstract class Rule implements Observer {
   Observable observable;
-  protected Map<Pair<Integer,Integer>,Player> boardstate;
+  protected Map<Pair<Integer,Integer>,Stone> boardstate;
 
   public Rule(Observable observable) {
 		this.observable = observable;

@@ -27,14 +27,16 @@ public class HumanPlayer extends Player{
         return move;
     }
     public Move parseMe(String moveType, String[] params){
-        if(moveType.toLowerCase()=="place"){
-            return new PlaceStone(this,makeCoord(params[0]));
+        if(moveType.toLowerCase()=="place0"){
+            return new PlaceStone(this,makeCoord(params[0]), 0);
+        } else if(moveType.toLowerCase() == "place1"){
+        	return new PlaceStone(this, makeCoord(params[0]), 1);
         }
         else if(moveType.toLowerCase()=="move"){
             return new MoveStone(this,makeCoord(params[0]),makeCoord(params[1]));
         }
         else{
-            System.out.println("Type 'place' to put a new piece on the board, then type the coordinate (ie. A1) it goes in.");
+            System.out.println("Type 'place0' to put a normal piece on the board, type 'place1' for a wall, then type the coordinate (ie. A1) it goes in.");
             System.out.println("Type 'move' to move an existing piece, then type it's current location and where it should go.");
             return null;
         }

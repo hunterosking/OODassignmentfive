@@ -7,7 +7,7 @@ public interface Mode {
 
 	public ArrayList<Rule> setRules(Observable o);
 
-	public Map<Pair<Integer,Integer>,Player> setBoard();
+	public Map<Pair<Integer,Integer>,Stone> setBoard();
 
 	public ArrayList<WinCondition> setWinConditions(Observable o);
 

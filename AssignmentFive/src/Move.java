@@ -9,7 +9,7 @@ public abstract class Move {
     player = p;
   }
 
-  public abstract Map<Pair<Integer,Integer>,Player> alterBoard(Map<Pair<Integer,Integer>,Player> boardstate);
+  public abstract Map<Pair<Integer,Integer>,Stone> alterBoard(Map<Pair<Integer,Integer>,Stone> boardstate);
 
   public Player getPlayer() {
     return player;

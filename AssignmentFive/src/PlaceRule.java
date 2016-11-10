@@ -6,7 +6,7 @@ public class PlaceRule extends Rule {
   public PlaceRule(Observable o) {
   	super(o);
   }
-
+  //return true if the move M can be made
   public boolean check(Move m) {
     try {
       PlaceStone ps = (PlaceStone)m;

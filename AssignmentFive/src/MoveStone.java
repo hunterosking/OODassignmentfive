@@ -11,7 +11,7 @@ public class MoveStone extends Move {
     target = c2;
   }
 
-  public  Map<Pair<Integer,Integer>,Player> alterBoard(Map<Pair<Integer,Integer>,Player> boardstate) {
+  public  Map<Pair<Integer,Integer>,Stone> alterBoard(Map<Pair<Integer,Integer>,Stone> boardstate) {
       boardstate.put(target, boardstate.get(origin));
       boardstate.put(origin, null);
       return boardstate;

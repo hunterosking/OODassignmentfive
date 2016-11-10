@@ -29,28 +29,28 @@ public class DefaultRandomAIPlayer extends Player {
         
         //if that space is empty places stone there
         if (boardstate.get(space) == null) {
-        	return new PlaceStone(this, space);
+        	return new PlaceStone(this, space, 0);
         }
 
         //if space contains it's own stone, checks surrounding spaces for enemy stones to move onto
-        if (boardstate.get(space) == this) {
+        if (boardstate.get(space).owner == this) {
         	Pair<Integer,Integer> target = new Pair<Integer,Integer>(space.getKey(), space.getValue()+1);
-        	if (boardstate.get(target) != null && boardstate.get(target) != this) {
+        	if (boardstate.get(target) != null && boardstate.get(target).owner != this) {
         		return new MoveStone(this, space, target);
         	}
 
         	target = new Pair<Integer,Integer>(space.getKey(), space.getValue()-1);
-        	if (boardstate.get(target) != null && boardstate.get(target) != this) {
+        	if (boardstate.get(target) != null && boardstate.get(target).owner != this) {
         		return new MoveStone(this, space, target);
         	}
 
         	target = new Pair<Integer,Integer>(space.getKey()+1, space.getValue());
-        	if (boardstate.get(target) != null && boardstate.get(target) != this) {
+        	if (boardstate.get(target) != null && boardstate.get(target).owner != this) {
         		return new MoveStone(this, space, target);
         	}
 
         	target = new Pair<Integer,Integer>(space.getKey()-1, space.getValue());
-        	if (boardstate.get(target) != null && boardstate.get(target) != this) {
+        	if (boardstate.get(target) != null && boardstate.get(target).owner != this) {
         		return new MoveStone(this, space, target);
         	}
 		}
