@@ -3,7 +3,7 @@ import javafx.util.Pair;
 
 public abstract class FooGUI implements Observer {
   Observable observable;
-	protected Map<Pair<Integer,Integer>,Stone> boardstate;
+  protected Map<Pair<Integer,Integer>,Stone> boardstate;
   protected ArrayList<Player> playerlist;
 
   public FooGUI(Observable observable) {

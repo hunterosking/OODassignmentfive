@@ -19,7 +19,9 @@ public class maxStones extends WinCondition{
 								for (Player p3:playerlist) {
 									int counter = 0;
 									for (Stone s2:boardstate.values()) {
-										if(p3 == s2.owner) counter++;
+										if(s2 != null){
+											if(p3 == s2.owner) counter++;
+										}
 									if (counter > max_stones) {
 										max_stones = counter;
 										winner = p;
