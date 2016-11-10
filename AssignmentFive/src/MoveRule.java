@@ -7,7 +7,7 @@ public class MoveRule extends Rule {
   public MoveRule(Observable o) {
     super(o);
   }
-
+  //check if the move can be made
   public boolean check(Move m) {
     try {
       MoveStone ms = (MoveStone)m;
@@ -25,6 +25,9 @@ public class MoveRule extends Rule {
       }
       if (boardstate.get(ms.getOrigin()).owner != ms.getPlayer()){
         return false;
+      }
+      if(boardstate.get(ms.getTarget()).type == 1){
+    	  return false;
       }
       return FooGame.checkAdjacency(ms.getOrigin(), ms.getTarget());
     } catch (ClassCastException e) {
