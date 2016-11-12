@@ -5,5 +5,6 @@ public class Stone {
 	public Stone(Player owner, int type){
 		this.owner = owner;
 		this.type = type;
+		
 	}
 }

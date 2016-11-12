@@ -10,7 +10,7 @@ public class FooGame extends Observable {
     protected ArrayList<WinCondition> winlist;
     protected FooGUI foogui;
     private Mode mode;
-    private int turn = 0;
+    private static int turn = 0;
     private boolean started = false;
 
     public FooGame(Mode m) {
@@ -34,7 +34,7 @@ public class FooGame extends Observable {
         nextTurn();
       }
     }
-
+    
     public void addPlayer(Player p) {
     	playerlist.add(p);
     }
@@ -118,6 +118,9 @@ public class FooGame extends Observable {
         System.exit(0);
     }
 
+    public static int getTurn(){
+    	return turn;
+    }
 
     public static void main(String[] args) {
       System.out.println("let's play!");
