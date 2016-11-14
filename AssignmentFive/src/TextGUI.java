@@ -15,7 +15,7 @@ public class TextGUI extends FooGUI {
 			//System.out.print(playerlist.indexOf((Player)input)+1);
 		} else {
 			if(FooGame.getTurn()%2 != 0){
-				if (input.owner.toString() == "Computer1"){
+				if (input.owner.toString().indexOf('1') > 0){
 					System.out.print("1");
 				}
 				else{
@@ -23,7 +23,7 @@ public class TextGUI extends FooGUI {
 				}
 				
 			}else{
-				if (input.owner.toString() == "Computer1"){
+				if (input.owner.toString().indexOf('1') > 0){
 					System.out.print("1");
 				}else{
 					System.out.print("2");
